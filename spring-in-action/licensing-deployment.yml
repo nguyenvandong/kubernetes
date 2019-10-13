@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: licensing-deployment
+  labels:
+    app: licensing-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: licensing-app
+  template:
+    metadata:
+      labels:
+        app: licensing-app
+    spec:
+      containers:
+      - name: licensing-service
+        image: gcr.io/example-1-255623/licensing-service:v1
+        ports:
+        - containerPort: 3001

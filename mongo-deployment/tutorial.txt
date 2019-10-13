@@ -1,0 +1,9 @@
+Note: không chạy được nếu dùng storageclass "fast" mà phải dùng "default"
+Step:
+    1: kubectl apply -f gc_ssd.yml
+    2: kubectl apply -f mongo_statefulset.yml
+
+cleanup: 
+    - kubectl delete statefulset mongo
+    - kubectl delete svc mongo
+    - kubectl delete pvc -l role=mongo

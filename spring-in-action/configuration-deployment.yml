@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: configuration-deployment
+  labels:
+    app: configuration-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: configuration-app
+  template:
+    metadata:
+      labels:
+        app: configuration-app
+    spec:
+      containers:
+      - name: configuration-server
+        image: gcr.io/example-1-255623/configuration-server:v5
+        ports:
+        - containerPort: 3000
