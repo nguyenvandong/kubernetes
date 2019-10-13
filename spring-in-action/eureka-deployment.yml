@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eureka-deployment
+  labels:
+    app: eureka-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eureka-app
+  template:
+    metadata:
+      labels:
+        app: eureka-app
+    spec:
+      containers:
+        - name: eureka-server
+          image: gcr.io/example-1-255623/eureka-server:v1
+          ports:
+            - containerPort: 8761
